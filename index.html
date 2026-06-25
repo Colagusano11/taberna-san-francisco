@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Taberna de San Francisco · San Fernando, Cádiz</title>
+<meta name="description" content="Una abacería tradicional con toque moderno, productos de Cádiz seleccionados y tapas que salen bien en cualquier foto. Abiertos todos los días, que ya dice mucho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--negro:#1A1410;--tinta:#2C2318;--tierra:#8B4513;--ocre:#C8922A;--ocre-lt:#F0D9A8;--crema:#FBF5E6;--blanco:#FFFFFF;--gris:#6B6458;--borde:rgba(139,69,19,0.18);--ff-display:'Playfair Display',Georgia,serif;--ff-body:'Inter',system-ui,sans-serif;--max:1120px;--r:4px}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--crema);color:var(--tinta);line-height:1.65;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ocre);margin-bottom:.75rem}
+.divider{border:none;border-top:1px solid var(--borde)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,245,230,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--borde)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 1.25rem;max-width:var(--max);margin:0 auto}
+.nav-logo{font-family:var(--ff-display);font-size:1.1rem;color:var(--negro);font-weight:700}
+.nav-logo span{color:var(--tierra);font-style:italic;font-weight:400}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gris);transition:color .2s}
+.nav-links a:hover{color:var(--tierra)}
+.nav-cta{background:var(--tierra);color:var(--blanco)!important;padding:8px 18px;border-radius:var(--r);font-size:13px!important;font-weight:600!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--negro)!important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--tinta);border-radius:2px}
+.nav-mobile{display:none;flex-direction:column;background:var(--crema);border-top:1px solid var(--borde);padding:.5rem 1.25rem 1rem}
+.nav-mobile.open{display:flex}
+.nav-mobile a{padding:.6rem 0;font-size:15px;font-weight:500;color:var(--tinta);border-bottom:1px solid var(--borde)}
+.nav-mobile a:last-child{border-bottom:none;margin-top:.5rem}
+.hero{padding-top:58px;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 1.25rem;max-width:620px;margin-left:auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tierra);margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--tierra)}
+.hero-title{font-family:var(--ff-display);font-size:clamp(2.8rem,5.5vw,4.5rem);line-height:1.08;letter-spacing:-.02em;color:var(--negro);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--tierra);font-weight:400}
+.hero-desc{font-size:1.05rem;color:var(--gris);max-width:420px;margin-bottom:2.5rem;line-height:1.75}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:3rem}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--tierra);color:var(--blanco);padding:14px 28px;border-radius:var(--r);font-weight:600;font-size:15px;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--negro);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--tierra);color:var(--tierra);padding:13px 28px;border-radius:var(--r);font-weight:600;font-size:15px;transition:all .2s}
+.btn-secondary:hover{background:var(--tierra);color:var(--blanco)}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--borde)}
+.stat-num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--negro);line-height:1;margin-bottom:2px}
+.stat-lbl{font-size:12px;color:var(--gris);font-weight:500}
+.hero-right{position:relative;overflow:hidden;background:var(--negro)}
+.hero-plate{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:100%;height:100%;gap:3px}
+.plate-cell{position:relative;overflow:hidden;background:#2a1505}
+.plate-cell img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .4s,transform .5s}
+.plate-cell:hover img{opacity:1;transform:scale(1.05)}
+.plate-cell-label{position:absolute;bottom:10px;left:10px;font-size:11px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.07em;text-transform:uppercase;background:rgba(0,0,0,.48);padding:3px 9px;border-radius:2px}
+.sobre{padding:6rem 0;background:var(--blanco)}
+.sobre-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.sobre-img-wrap{position:relative}
+.sobre-img-main{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+.sobre-img-main img{width:100%;height:100%;object-fit:cover}
+.sobre-img-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;width:130px;height:130px;background:var(--ocre);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid var(--blanco)}
+.badge-num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--negro);line-height:1}
+.badge-txt{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--negro);text-align:center;line-height:1.3}
+.sobre-content h2{font-family:var(--ff-display);font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.15;color:var(--negro);margin-bottom:1.25rem}
+.sobre-content h2 em{color:var(--tierra);font-style:italic;font-weight:400}
+.sobre-content p{color:var(--gris);margin-bottom:1.25rem;line-height:1.75}
+.especial{padding:6rem 0;background:var(--crema)}
+.especial-header{margin-bottom:3rem}
+.especial-header h2{font-family:var(--ff-display);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--negro);line-height:1.1}
+.especial-header h2 em{color:var(--tierra);font-style:italic;font-weight:400}
+.especial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tapa-card{background:var(--blanco);border-radius:var(--r);overflow:hidden;border:1px solid var(--borde);transition:transform .2s,box-shadow .2s}
+.tapa-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(44,35,24,.1)}
+.tapa-card-img{width:100%;height:200px;overflow:hidden;background:#2a1505}
+.tapa-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.tapa-card:hover .tapa-card-img img{transform:scale(1.06)}
+.tapa-card-body{padding:1.25rem 1.5rem 1.5rem}
+.tapa-name{font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--negro);margin-bottom:.4rem}
+.tapa-desc{font-size:13px;color:var(--gris);line-height:1.6}
+.galeria-strip{display:flex;gap:3px;overflow:hidden}
+.galeria-strip .g-cell{flex:1;height:260px;overflow:hidden;background:#1a1410}
+.galeria-strip .g-cell img{width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .35s,transform .4s}
+.galeria-strip .g-cell:hover img{opacity:1;transform:scale(1.06)}
+.resenas{padding:6rem 0;background:var(--negro)}
+.resenas-header{text-align:center;margin-bottom:3.5rem}
+.resenas-header .section-label{color:var(--ocre)}
+.resenas-header h2{font-family:var(--ff-display);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--blanco);line-height:1.1}
+.resenas-header h2 em{color:var(--ocre);font-style:italic;font-weight:400}
+.resenas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+.resena-card{background:rgba(255,255,255,.04);padding:2rem;position:relative}
+.resena-stars{display:flex;gap:3px;margin-bottom:1rem}
+.star{color:var(--ocre);font-size:14px}
+.resena-text{font-size:14px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.resena-autor{font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
+.resena-card::before{content:'"';position:absolute;top:1.25rem;right:1.75rem;font-family:var(--ff-display);font-size:4rem;color:rgba(200,146,42,.15);line-height:1}
+.resenas-cta{text-align:center;margin-top:3rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.score-num{font-family:var(--ff-display);font-size:3rem;font-weight:700;color:var(--ocre);line-height:1}
+.score-stars{display:flex;gap:3px;margin-bottom:2px}
+.score-count{font-size:12px;color:rgba(255,255,255,.5)}
+.contacto{padding:6rem 0;background:var(--blanco)}
+.contacto-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contacto-info h2{font-family:var(--ff-display);font-size:clamp(2rem,3vw,2.5rem);color:var(--negro);margin-bottom:.75rem;line-height:1.15}
+.contacto-info h2 em{color:var(--tierra);font-style:italic;font-weight:400}
+.contacto-info>p{color:var(--gris);margin-bottom:2.5rem;line-height:1.7}
+.info-block{margin-bottom:2rem}
+.info-block-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--ocre);margin-bottom:.75rem}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--borde);font-size:14px}
+.info-row:last-child{border-bottom:none}
+.info-row .day{color:var(--tinta);font-weight:500}
+.info-row .time{color:var(--gris)}
+.info-row .closed{color:var(--tierra);font-weight:500}
+.contacto-detail{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1rem;font-size:15px}
+.contact-icon{width:36px;height:36px;background:var(--ocre-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.contacto-detail .cd-text a{color:var(--tierra);font-weight:600}
+.contacto-detail .cd-text small{display:block;font-size:12px;color:var(--gris);margin-top:1px}
+.mapa-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--borde)}
+.mapa-wrap iframe{width:100%;height:380px;display:block;border:none;filter:grayscale(20%) contrast(1.05)}
+.reserva-aviso{background:var(--ocre-lt);border-left:3px solid var(--ocre);padding:1rem 1.25rem;border-radius:0 var(--r) var(--r) 0;margin-bottom:2rem;font-size:14px;color:var(--tinta)}
+.reserva-aviso strong{color:var(--tierra)}
+footer{background:var(--tinta);color:rgba(255,255,255,.55);padding:2.5rem 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:var(--ff-display);font-size:1.1rem;color:rgba(255,255,255,.85)}
+.footer-brand span{color:var(--ocre);font-style:italic;font-weight:400}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.85)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left{padding:3.5rem 1.25rem 2.5rem;max-width:100%;margin:0}.hero-right{height:60vw;min-height:280px}.sobre-inner{grid-template-columns:1fr;gap:3rem}.especial-grid{grid-template-columns:1fr 1fr}.resenas-grid{grid-template-columns:1fr}.contacto-inner{grid-template-columns:1fr;gap:3rem}.nav-links{display:none}.nav-hamburger{display:flex}.galeria-strip .g-cell{min-width:240px;height:180px}}
+@media(max-width:560px){.especial-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;text-align:center}.hero-stats{gap:1.25rem}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp .6s ease both}
+.hero-left>*:nth-child(1){animation-delay:.05s}.hero-left>*:nth-child(2){animation-delay:.15s}.hero-left>*:nth-child(3){animation-delay:.25s}.hero-left>*:nth-child(4){animation-delay:.35s}.hero-left>*:nth-child(5){animation-delay:.45s}
+@media(prefers-reduced-motion:reduce){.hero-left>*{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">La <span>Taberna de San Francisco</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Quiénes somos</a></li>
+      <li><a href="#carta">Especialidades</a></li>
+      <li><a href="#contacto">Reservas</a></li>
+      <li><a href="tel:+34644027592" class="nav-cta">📞 Reservar</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menú" onclick="document.getElementById('nm').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nm">
+    <a href="#nosotros" onclick="document.getElementById('nm').classList.remove('open')">Quiénes somos</a>
+    <a href="#carta" onclick="document.getElementById('nm').classList.remove('open')">Especialidades</a>
+    <a href="#contacto" onclick="document.getElementById('nm').classList.remove('open')">Dónde estamos</a>
+    <a href="tel:+34644027592" class="nav-cta">📞 Llamar para reservar</a>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Tapas & Abacería · C/ Almte. Faustino Ruiz, 7 · San Fernando</div>
+    <h1 class="hero-title">Abacería moderna,<br>tapas con <em>producto de primera</em></h1>
+    <p class="hero-desc">Una abacería tradicional con toque moderno, productos de Cádiz seleccionados y tapas que salen bien en cualquier foto. Abiertos todos los días, que ya dice mucho.</p>
+    <div class="hero-actions">
+      <a href="tel:+34644027592" class="btn-primary">📞 Reservar mesa</a>
+      <a href="#carta" class="btn-secondary">Ver especialidades</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">4,6★</div><div class="stat-lbl">En Google</div></div>
+      <div><div class="stat-num">+63</div><div class="stat-lbl">Reseñas</div></div>
+      <div><div class="stat-num">10–30€</div><div class="stat-lbl">Por persona</div></div>
+    </div>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-plate">
+      <div class="plate-cell"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80&auto=format&fit=crop" alt="Plato 1" loading="eager"><div class="plate-cell-label">Brioche de pringá</div></div>
+      <div class="plate-cell"><img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80&auto=format&fit=crop" alt="Plato 2" loading="eager"><div class="plate-cell-label">Croquetas de chicharrones</div></div>
+      <div class="plate-cell"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&q=80&auto=format&fit=crop" alt="Plato 3" loading="eager"><div class="plate-cell-label">Quesos de Cádiz</div></div>
+      <div class="plate-cell"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&auto=format&fit=crop" alt="Plato 4" loading="eager"><div class="plate-cell-label">Solomillo al queso payoyo</div></div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="sobre" id="nosotros">
+  <div class="container">
+    <div class="sobre-inner">
+      <div class="sobre-img-wrap">
+        <div class="sobre-img-main"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80&auto=format&fit=crop" alt="Interior del local"></div>
+        <div class="sobre-img-badge"><div class="badge-num">La Taberna</div><div class="badge-txt">Abiertos todos los días</div></div>
+      </div>
+      <div class="sobre-content">
+        <div class="section-label">Nuestra historia</div>
+        <h2>Un rincón con <em>sabor propio</em></h2>
+        <p>La Taberna de San Francisco abrió hace poco en la Calle Almirante Faustino Ruiz con una propuesta clara: productos de calidad, diferente a lo habitual en la isla y con muchas ganas de hacerlo bien. Abren todos los días, lo cual ya dice mucho de ellos.</p><p>Pedro está en la cocina, Ana y el equipo en la sala. Juntos han montado un local pequeño y acogedor donde cada plato está pensado, cada ingrediente seleccionado y cada visita tratada como si fuera la primera.</p><p>El brioche de pringá, las croquetas de chicharrones y los quesos de Cádiz bien despachados son ya sus señas de identidad. Con 4,6 estrellas y reseñas que no paran de llegar, la Taberna de San Francisco va camino de convertirse en imprescindible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="especial" id="carta">
+  <div class="container">
+    <div class="especial-header">
+      <div class="section-label">Lo que pide todo el mundo</div>
+      <h2>Nuestras <em>especialidades</em></h2>
+    </div>
+    <div class="especial-grid">
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80&auto=format&fit=crop" alt="Brioche de pringá" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Brioche de pringá</div><div class="tapa-desc">El plato más icónico de la carta. La pringá del cocido metida en un brioche esponjoso. Imprescindible en la primera visita.</div></div></div>
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&q=80&auto=format&fit=crop" alt="Croquetas de chicharrones" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Croquetas de chicharrones</div><div class="tapa-desc">Caseras, crujientes y con sabor a cocido gaditano. Varios clientes las han calificado de espectáculo.</div></div></div>
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=500&q=80&auto=format&fit=crop" alt="Quesos de Cádiz" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Quesos de Cádiz</div><div class="tapa-desc">Selección de quesos de la provincia, bien despachados y con acompañamiento. Para el que quiere descubrir lo que da de sí Cádiz.</div></div></div>
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&auto=format&fit=crop" alt="Solomillo al queso payoyo" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Solomillo al queso payoyo</div><div class="tapa-desc">Carne local con queso de la sierra gaditana. Combinación que no falla y que sale en casi todas las reseñas.</div></div></div>
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80&auto=format&fit=crop" alt="Patatas bravas con alioli" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Patatas bravas con alioli</div><div class="tapa-desc">Las que no faltan en ninguna mesa. Con un alioli casero que equilibra el picante. Clásico bien ejecutado.</div></div></div>
+      <div class="tapa-card"><div class="tapa-card-img"><img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=500&q=80&auto=format&fit=crop" alt="Saquitos de gambas al ajillo" loading="lazy"></div><div class="tapa-card-body"><div class="tapa-name">Saquitos de gambas al ajillo</div><div class="tapa-desc">Cuatro saquitos por ración, crujientes por fuera y con gambas reales dentro. De los más pedidos en la carta.</div></div></div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:14px;color:var(--gris)">Tapas · Raciones · Platos para compartir · Desde 10€/persona</p>
+  </div>
+</section>
+
+<div class="galeria-strip">
+  <div class="g-cell"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+  <div class="g-cell"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+  <div class="g-cell"><img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+  <div class="g-cell"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=500&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+  <div class="g-cell"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+</div>
+
+<section class="resenas">
+  <div class="container">
+    <div class="resenas-header">
+      <div class="section-label">Lo que dicen los clientes</div>
+      <h2>4,6★ de media · <em>+63 reseñas</em></h2>
+    </div>
+    <div class="resenas-grid">
+      <div class="resena-card"><div class="resena-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="resena-text">Sitio super acogedor, servicio perfecto, comida exquisita y precios acordes a la calidad. No es caro. El servicio muy atento en todo momento, rápido y eficaz.</p><div class="resena-autor">— Maria F., Tripadvisor</div></div>
+      <div class="resena-card"><div class="resena-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="resena-text">Un lugar de sabores muy elaborados. La cocina de Pedro es fantástica. El brioche de pringá es imperdible. Ana es una camarera de 10, muy simpática y profesional.</p><div class="resena-autor">— Cliente de Google Maps</div></div>
+      <div class="resena-card"><div class="resena-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="resena-text">Un sitio agradable y discreto. Está todo buenísimo, ya hemos venido más de 3 veces y no defrauda. Las croquetas de chicharrones son un espectáculo.</p><div class="resena-autor">— Cliente habitual, Google Maps</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="contacto-inner">
+      <div class="contacto-info">
+        <div class="section-label">Reservas & ubicación</div>
+        <h2>Ven a <em>disfrutar</em><br>con nosotros</h2>
+        <p>Te esperamos. Para asegurarte una mesa, sobre todo los fines de semana, te recomendamos llamar antes.</p>
+        <div class="reserva-aviso"><strong>⚠️ Reserva recomendada</strong> Terraza con mesas pegadas en horas punta — reserva si vais en grupo o en fin de semana.</div>
+        <div class="contacto-detail"><div class="contact-icon">📞</div><div class="cd-text"><a href="tel:+34644027592">644 02 75 92</a><small>Llamada o WhatsApp</small></div></div>
+        <div class="contacto-detail"><div class="contact-icon">📍</div><div class="cd-text">Calle Almte. Faustino Ruiz, 7<br>11100 San Fernando<small>San Fernando, Cádiz</small></div></div>
+        <div class="info-block" style="margin-top:2rem">
+          <div class="info-block-title">Horario</div>
+          <div class="info-row"><span class="day">Lunes – Sábado</span><span class="time">8:30–16:00 / 20:00–24:00</span></div><div class="info-row"><span class="day">Domingo</span><span class="time">20:00–24:00</span></div>
+          <div class="info-row"><span class="day">Sin cierre semanal</span><span class="closed">Cerrado</span></div>
+        </div>
+        <a href="tel:+34644027592" class="btn-primary" style="margin-top:.5rem">📞 Llamar para reservar</a>
+      </div>
+      <div>
+        <div class="mapa-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.6!2d-6.1987!3d36.4726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zLa Taberna de San Francisco+San+Fernando+Cadiz!5e0!3m2!1ses!2ses!4v1700000000001" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa La Taberna de San Francisco"></iframe></div>
+        <p style="margin-top:.75rem;font-size:12px;color:var(--gris);text-align:center">🕗 Abiertos todos los días · 🧀 Selección de quesos de Cádiz · ♿ Acceso adaptado · 🌿 Terraza disponible</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">La <span>Taberna de San Francisco</span></div>
+      <ul class="footer-links"><li><a href="#inicio">Inicio</a></li><li><a href="#carta">Carta</a></li><li><a href="#contacto">Reservas</a></li><li><a href="tel:+34644027592">644 02 75 92</a></li></ul>
+      <div class="footer-copy">© 2025 La Taberna de San Francisco · San Fernando, Cádiz</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
